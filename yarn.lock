@@ -1923,6 +1923,18 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@unform/core@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@unform/core/-/core-2.1.3.tgz#d3529f9f7a75d71a93f21d2b324d3f41806096d9"
+  integrity sha512-d6xQJWFrLfEyfN7f5t2IdYBLJE/OrvPKILCzGKPSoAmY3+vAnEc4CPE5l6zB+LxWSfMn69QhsqzI20tIRNT7EA==
+  dependencies:
+    dot-object "^2.1.2"
+
+"@unform/mobile@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@unform/mobile/-/mobile-2.1.3.tgz#07e34d65ce85f59b5d076e0022b8fb09ea3c795a"
+  integrity sha512-8XdH7rJF7ftZl7ju6xH/wQU/ljq6GdlgBB4jLYoxnJm7WExRrARxyBVZ8+L4KZlbmGUzvsor5ZuOthFAcpaujA==
+
 "@urql/core@2.3.6", "@urql/core@>=2.3.1":
   version "2.3.6"
   resolved "https://registry.npmjs.org/@urql/core/-/core-2.3.6.tgz"
@@ -2610,6 +2622,11 @@ commander@^5.1.0:
   resolved "https://registry.npmjs.org/commander/-/commander-5.1.0.tgz"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
+commander@^6.1.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
+  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
+
 commander@^7.2.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/commander/-/commander-7.2.0.tgz"
@@ -2927,6 +2944,14 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
+
+dot-object@^2.1.2:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/dot-object/-/dot-object-2.1.5.tgz#0ff0f1bff42c47ff06272081b208658c0a0231c2"
+  integrity sha512-xHF8EP4XH/Ba9fvAF2LDd5O3IITVolerVV6xvkxoM8zlGEiCUrggpAnHyOoKJKCrhvPcGATFAUwIujj7bRG5UA==
+  dependencies:
+    commander "^6.1.0"
+    glob "^7.1.6"
 
 dotenv-expand@~11.0.6:
   version "11.0.6"
