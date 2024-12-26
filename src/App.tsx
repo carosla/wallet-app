@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text } from "react-native"
+import { StatusBar } from "expo-status-bar";
+import { View, Text, SafeAreaView } from "react-native"
 import AppLoading from "expo-app-loading"
 import {ThemeProvider} from "styled-components/native"
 
@@ -18,6 +19,8 @@ import { DMSerifDisplay_400Regular } from "@expo-google-fonts/dm-serif-display"
 
 import COLORS from "../src/styles/theme"
 
+import { Login } from "./screens/Login/Login";
+
 export default function App() {
     const [fontsLoaded] = useFonts({
         Poppins_300Light,
@@ -35,17 +38,14 @@ export default function App() {
 
     return (
         <ThemeProvider theme={COLORS}>
-        <View
-            style={
-                {
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }
-            }
-        >
-            <Text>Carteira App</Text>
-        </View>
+            <StatusBar
+                style="dark"
+                translucent
+                backgroundColor="transparent"
+            />
+        <SafeAreaView style={{ flex: 1 }}>
+            <Login/>
+        </SafeAreaView>
         </ThemeProvider>
     );
 }
