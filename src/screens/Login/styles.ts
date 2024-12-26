@@ -16,7 +16,9 @@ export const ContentBody = styled.View``;
 
 export const ContentFooter = styled.View``;
 
-export const ViewButton = styled.View``;
+export const ViewButton = styled.View`
+    flex-direction: row;
+`;
 
 export const Title = styled.Text`
     text-align: center;
@@ -28,5 +30,6 @@ export const Title = styled.Text`
 export const Description = styled.Text`
     margin-top: ${RFValue(60)}px;
     font-size: ${RFValue(15)}px;
+    margin-bottom: ${RFValue(15)}px;
     font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSLIGHT};
     `;

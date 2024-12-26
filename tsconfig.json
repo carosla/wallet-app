@@ -15,8 +15,11 @@
         "@services/*": ["./services/*"],
         "@styles/*": ["./styles/*"],
         "@utils/*": ["./utils/*"],
-      }
+      },
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true
     },
+    
     "include": [
     "src/**/*",
     "src/styles/styled.d.ts"

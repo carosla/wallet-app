@@ -2,6 +2,7 @@ import React from "react";
 
 import { SafeAreaView, Text } from "react-native";
 
+import { ButtonSocialGoogle } from "../../components/ButtonSocialGoogle/ButtonSocialGoogle";
 import {
     Container,
     ContentHeader,
@@ -22,6 +23,9 @@ const Login: React.FC = () => {
                     <Description>Entrar com redes sociais</Description>
 
                     <ViewButton>
+
+                        <ButtonSocialGoogle title="Google"/>
+                        <ButtonSocialGoogle title="Google"/>
 
                     </ViewButton>
                 </ContentHeader>
