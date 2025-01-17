@@ -2,6 +2,8 @@ import React from "react";
 
 import { SafeAreaView, Text } from "react-native";
 
+import { Input } from ".././../components/input/input";
+
 import { ButtonSocialGoogle } from "../../components/ButtonSocialGoogle/ButtonSocialGoogle";
 import { ButtonSocial } from "../../components/ButtonSocial/ButtonSocial";
 import {
@@ -32,7 +34,7 @@ const Login: React.FC = () => {
                 </ContentHeader>
 
                 <ContentBody>
-
+                    <Input/>
                 </ContentBody>
 
                 <ContentFooter>
