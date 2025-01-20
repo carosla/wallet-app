@@ -40,7 +40,7 @@ export const IConContainer = styled.View<IContainerProps>`
     margin-right: ${RFValue(3)}px;
     border-top-left-radius: ${RFValue(5)}px;
     border-bottom-left-radius: ${RFValue(5)}px;
-    background-color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY5};
+    background-color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY1};
 `;
 
 export const InputText = styled(TextInput)<ITextContainerProps>`

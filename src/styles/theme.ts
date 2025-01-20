@@ -1,4 +1,6 @@
-export default {
+import { DefaultTheme } from 'styled-components/native';
+
+const COLORS: DefaultTheme = {
     COLORS: {
         TEXT: '#969CB2',
         GRAY: '#999591',
@@ -115,4 +117,6 @@ export default {
         POPPINSREGULAR: 'Poppins_400Regular',
         POPPINSEXTRABOLD: 'Poppins_800ExtraBold',
     },
-};
+}
+
+export default COLORS;

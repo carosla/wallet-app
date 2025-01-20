@@ -38,6 +38,7 @@ export default function App() {
 
     return (
         <ThemeProvider theme={COLORS}>
+            
             <StatusBar
                 style="dark"
                 translucent
