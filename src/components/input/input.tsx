@@ -52,9 +52,11 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({
                 isFocused={isFocused}>
 
                 <Ionicons
-                    name={iconName}
-                    size={25}
-                    color={isFocused || hasErrors || isFilled
+                    name={'mail'}
+                    size={40}
+                    color={ 
+                        
+                        isFocused || hasErrors || isFilled
                         ? theme.COLORS.BLUE1
                         : theme.COLORS.GRAY5
                     }
