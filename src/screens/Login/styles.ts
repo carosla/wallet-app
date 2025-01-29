@@ -9,7 +9,7 @@ export const Container = styled.View`
 export const ContentHeader = styled.View`
     align-items: center;
     justify-content: center;
-    padding: ${RFValue(10)}px;
+    padding: ${RFValue(20)}px;
 `;
 
 export const ContentBody = styled.View``;

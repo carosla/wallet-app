@@ -1,65 +1,22 @@
-import styled, {css, DefaultTheme} from "styled-components/native";
-import { TextInput, ViewProps } from "react-native";
-import { RFValue } from "react-native-responsive-fontsize";
-import theme from "@src/styles/theme";
-
-interface IContainerProps extends ViewProps{
-    hasError: boolean;
-    isFocused: boolean;
-    isFilled?: boolean;
-}
-
-interface ITextContainerProps extends ViewProps{
-    hasError: boolean;
-    isFocused: boolean;
-    isFilled?: boolean;
-}
+import styled, { DefaultTheme } from "styled-components/native";
 
 export const Container = styled.View`
-    width: 85%;
-    height: ${RFValue(50)}px;
-    flex-direction: row;
-    margin-bottom: ${RFValue(10)}px;
-`;
-
-export const IConContainer = styled.View<IContainerProps>`
-    width: ${RFValue(55)}px;
-    height: ${RFValue(50)}px;
+    height: 50px;
+    width: 100%;
+    padding: 0 12px;
     justify-content: center;
+    flex-direction: row;
     align-items: center;
-
-    ${({isFocused, isFilled}: {isFocused:boolean; isFilled:boolean}) => (isFocused || isFilled) && css`
-        border-bottom-width:  ${RFValue(2)}px;
-        border-bottom-color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.BLUE1};
-    `};
-
-    ${({hasError}: {hasError: DefaultTheme}) => hasError && css`
-        border-bottom-color: ${({theme}) => theme.COLORS.RED}
-    `};
-
-    margin-right: ${RFValue(3)}px;
-    border-top-left-radius: ${RFValue(5)}px;
-    border-bottom-left-radius: ${RFValue(5)}px;
-    background-color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY1};
-`;
-
-export const InputText = styled(TextInput)<ITextContainerProps>`
-    flex: 1;
-    font-size: ${RFValue(12)}px;
-    border-top-right-radius: ${RFValue(5)}px;
-    border-bottom-right-radius: ${RFValue(5)}px;
-    color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY4};
-    font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSLIGHT};
+    margin-top: 10px;
+    border-radius: 8px;
     background-color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY5};
-
-    ${({isFocused, isFilled}: {isFocused:boolean; isFilled:boolean}) => (isFocused || isFilled) && css`
-        border-bottom-width:  ${RFValue(2)}px;
-        border-bottom-color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.BLUE1};
-    `};
-
-    ${({hasError}: {hasError: DefaultTheme}) => hasError && css`
-        border-bottom-color: ${({theme}) => theme.COLORS.RED}
-    `};
-
-    padding: 0 ${RFValue(10)}px;
 `;
+
+export const InputContainer = styled.TextInput`
+    flex: 1;
+    height: 45px;
+    border: 0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSLIGHT};
+`
