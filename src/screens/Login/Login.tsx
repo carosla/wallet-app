@@ -3,6 +3,7 @@ import React from "react";
 import { SafeAreaView, Text } from "react-native";
 
 import Input from "../../components/Input/input";
+import { Button } from "../../components/Button";
 import { ButtonSocialGoogle } from "../../components/ButtonSocialGoogle/ButtonSocialGoogle";
 import { ButtonSocial } from "../../components/ButtonSocial/ButtonSocial";
 import {
@@ -14,10 +15,9 @@ import {
     Description,
     ViewButton
 } from "./styles";
-import { useTheme } from "styled-components";
+import COLORS from "../../styles/theme";
 
 const Login: React.FC = () => {
-
 
     return (
         <SafeAreaView>
@@ -36,8 +36,23 @@ const Login: React.FC = () => {
                 </ContentHeader>
 
                 <ContentBody>
-                    <Input leftIcon />
-                    <Input rightIcon/>
+                    <Input 
+                        leftIcon 
+                        iconSize={25} 
+                        iconName="mail-outline" 
+                        placeholder="Digite seu e-mail"
+                    />
+                    <Input 
+                        leftIcon  
+                        iconSize={25}
+                        iconName="lock-closed-outline"
+                        placeholder="Digite sua senha"
+                    />
+
+                    <Button 
+                        title="Entrar"
+                        onPress={() => {}}
+                    />
                 </ContentBody>
 
                 <ContentFooter>
