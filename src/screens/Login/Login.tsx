@@ -39,12 +39,21 @@ const Login: React.FC = () => {
                     <Input 
                         leftIcon 
                         iconSize={25} 
+                        secureTextEntry={false}
+                        autoCorrect={false}
+                        keyboardType="default"
+                        autoCapitalize="none"
                         iconName="mail-outline" 
                         placeholder="Digite seu e-mail"
                     />
                     <Input 
                         leftIcon  
+                        rightIcon
                         iconSize={25}
+                        secureTextEntry
+                        autoCorrect={false}
+                        keyboardType="default"
+                        autoCapitalize="none"
                         iconName="lock-closed-outline"
                         placeholder="Digite sua senha"
                     />
