@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Pressable, SafeAreaView, Text } from "react-native";
+import { KeyboardAvoidingView, Pressable, SafeAreaView, Text } from "react-native";
 
 import Input from "../../components/Input/input";
 import { Button } from "../../components/Button";
@@ -27,7 +27,10 @@ import { ButtonPersonalizado } from "@src/components/ButtonPersonalizado";
 const Login: React.FC = () => {
 
     return (
-        <SafeAreaView>
+            <KeyboardAvoidingView
+                behavior="position"
+                enabled
+            >
             <Container>
                 <ContentHeader>
                     <Title>Seja bem vindo(a) {'\n'} a App Carteira</Title>
@@ -69,6 +72,11 @@ const Login: React.FC = () => {
                         <ContentButtonForgotPassword>
                             <ContentTitleForgotPassword>Recuperar Senha</ContentTitleForgotPassword>
                         </ContentButtonForgotPassword>
+                        {/* <ButtonPersonalizado
+                            title="Recuperar Senha"
+                            onPress={() => {}}
+                            variant='transparent'
+                        /> */}
                     </ContentForgotPassword>
 
                     <ButtonPersonalizado
@@ -86,7 +94,7 @@ const Login: React.FC = () => {
                     </ButtonSignUp>
                 </ContentFooter>
             </Container>
-        </SafeAreaView>
+        </KeyboardAvoidingView>
     );
 }
 

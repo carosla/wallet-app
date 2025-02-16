@@ -3,7 +3,6 @@ import { RFValue } from "react-native-responsive-fontsize";
 import theme from "@src/styles/theme";
 
 export const Container = styled.View`
-    flex: 1;
     padding: ${RFValue(10)}px;
 `;
 
@@ -61,10 +60,10 @@ export const TitleButtonSignUp2 = styled.Text`
 
 export const ContentForgotPassword = styled.View`
     width: 100%;
-    padding: 20px 0;
+    padding: 5px;
+    margin-top: 10px;
     align-items: flex-end;
-    margin-top: 20px;
-    justidy-content: flex-end;
+    justify-content: flex-end;
 `;
 
 export const ContentButtonForgotPassword = styled.Pressable`
