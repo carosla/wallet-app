@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SafeAreaView, Text } from "react-native";
+import { Pressable, SafeAreaView, Text } from "react-native";
 
 import Input from "../../components/Input/input";
 import { Button } from "../../components/Button";
@@ -13,9 +13,13 @@ import {
     ContentFooter,
     Title,
     Description,
-    ViewButton
+    ViewButton,
+    ButtonSignUp,
+    TitleButtonSignUp1,
+    TitleButtonSignUp2
 } from "./styles";
 import COLORS from "../../styles/theme";
+import { ButtonPersonalizado } from "@src/components/ButtonPersonalizado";
 
 const Login: React.FC = () => {
 
@@ -58,14 +62,19 @@ const Login: React.FC = () => {
                         placeholder="Digite sua senha"
                     />
 
-                    <Button 
+                    <ButtonPersonalizado
                         title="Entrar"
+                        variant="primary"
                         onPress={() => {}}
+                        style={{ marginBottom: 20 }}
                     />
                 </ContentBody>
 
                 <ContentFooter>
-
+                    <ButtonSignUp>
+                        <TitleButtonSignUp1>Não tem cadastro ainda?</TitleButtonSignUp1>
+                        <TitleButtonSignUp2>Cadastre-se</TitleButtonSignUp2>
+                    </ButtonSignUp>
                 </ContentFooter>
             </Container>
         </SafeAreaView>
