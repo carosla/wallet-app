@@ -2,10 +2,10 @@ import React from "react";
 
 import { KeyboardAvoidingView, Pressable, SafeAreaView, Text } from "react-native";
 
-import Input from "../../components/Input/input";
-import { Button } from "../../components/Button";
-import { ButtonSocialGoogle } from "../../components/ButtonSocialGoogle/ButtonSocialGoogle";
-import { ButtonSocial } from "../../components/ButtonSocial/ButtonSocial";
+import Input from "../../../components/Input/input";
+import { Button } from "../../../components/Button";
+import { ButtonSocialGoogle } from "../../../components/ButtonSocialGoogle/ButtonSocialGoogle";
+import { ButtonSocial } from "../../../components/ButtonSocial/ButtonSocial";
 import {
     Container,
     ContentHeader,
@@ -21,11 +21,16 @@ import {
     ContentButtonForgotPassword,
     ContentTitleForgotPassword
 } from "./styles";
-import COLORS from "../../styles/theme";
+import COLORS from "../../../styles/theme";
 import { ButtonPersonalizado } from "@src/components/ButtonPersonalizado";
+import { useNavigation } from "@react-navigation/native";
 
 const Login: React.FC = () => {
+    const navigation = useNavigation()
 
+    const handleCadastro = () => {
+        navigation.navigate('Cadastro');
+    }
     return (
             <KeyboardAvoidingView
                 behavior="position"
@@ -88,7 +93,7 @@ const Login: React.FC = () => {
                 </ContentBody>
 
                 <ContentFooter>
-                    <ButtonSignUp onPress={() => {}}>
+                    <ButtonSignUp onPress={handleCadastro}>
                         <TitleButtonSignUp1>Não tem cadastro ainda?</TitleButtonSignUp1>
                         <TitleButtonSignUp2>Cadastre-se</TitleButtonSignUp2>
                     </ButtonSignUp>

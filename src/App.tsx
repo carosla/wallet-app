@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { View, Text, SafeAreaView } from "react-native"
 import AppLoading from "expo-app-loading"
 import {ThemeProvider} from "styled-components/native"
-
+import { NavigationContainer } from "@react-navigation/native";
 
 import {
     useFonts,
@@ -19,7 +19,9 @@ import { DMSerifDisplay_400Regular } from "@expo-google-fonts/dm-serif-display"
 
 import COLORS from "../src/styles/theme"
 
-import { Login } from "./screens/Login/Login";
+import { Login } from "./screens/Auth/Login/Login";
+import theme from "../src/styles/theme";
+import {Routes} from './routes'
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -37,16 +39,22 @@ export default function App() {
     }
 
     return (
-        <ThemeProvider theme={COLORS}>
-            
+        <ThemeProvider theme={theme}>
+            <NavigationContainer>
             <StatusBar
                 style="dark"
                 translucent
                 backgroundColor="transparent"
             />
-        <SafeAreaView style={{ flex: 1 }}>
-            <Login/>
-        </SafeAreaView>
+        <View
+            style={{
+                flex: 1,
+                backgroundColor: theme.COLORS.WHITE,
+            }}
+        >
+             <Routes/> 
+        </View>
+        </NavigationContainer>
         </ThemeProvider>
     );
 }
