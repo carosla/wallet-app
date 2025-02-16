@@ -31,6 +31,10 @@ const Login: React.FC = () => {
     const handleCadastro = () => {
         navigation.navigate('Cadastro');
     }
+
+    const handleRecuperarSenha = () => {
+        navigation.navigate('RecuperarSenha');
+    }
     return (
             <KeyboardAvoidingView
                 behavior="position"
@@ -74,7 +78,7 @@ const Login: React.FC = () => {
                     />
 
                     <ContentForgotPassword>
-                        <ContentButtonForgotPassword>
+                        <ContentButtonForgotPassword onPress={handleRecuperarSenha}>
                             <ContentTitleForgotPassword>Recuperar Senha</ContentTitleForgotPassword>
                         </ContentButtonForgotPassword>
                         {/* <ButtonPersonalizado
