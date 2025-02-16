@@ -48,7 +48,7 @@ export const ContentFooter = styled.View`
 
 export const TitleButtonSignUp1 = styled.Text`
     font-size: 14px;
-    color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY4};
+    color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY3};
     font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSMEDIUM};
 `;
 
@@ -57,4 +57,23 @@ export const TitleButtonSignUp2 = styled.Text`
     margin-left: 10px;
     font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSBOLD};
     color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.BLUE};
+`;
+
+export const ContentForgotPassword = styled.View`
+    width: 100%;
+    padding: 20px 0;
+    align-items: flex-end;
+    margin-top: 20px;
+    justidy-content: flex-end;
+`;
+
+export const ContentButtonForgotPassword = styled.Pressable`
+    justify-content: flex-end;
+`;
+export const ContentTitleForgotPassword = styled.Text`
+    align-items: flex-end;
+    font-size: 17px;
+    color: ${({theme}: {theme: DefaultTheme}) => theme.COLORS.GRAY3};
+    font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSREGULAR};
+
 `;

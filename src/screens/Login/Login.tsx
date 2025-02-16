@@ -16,7 +16,10 @@ import {
     ViewButton,
     ButtonSignUp,
     TitleButtonSignUp1,
-    TitleButtonSignUp2
+    TitleButtonSignUp2,
+    ContentForgotPassword,
+    ContentButtonForgotPassword,
+    ContentTitleForgotPassword
 } from "./styles";
 import COLORS from "../../styles/theme";
 import { ButtonPersonalizado } from "@src/components/ButtonPersonalizado";
@@ -62,6 +65,12 @@ const Login: React.FC = () => {
                         placeholder="Digite sua senha"
                     />
 
+                    <ContentForgotPassword>
+                        <ContentButtonForgotPassword>
+                            <ContentTitleForgotPassword>Recuperar Senha</ContentTitleForgotPassword>
+                        </ContentButtonForgotPassword>
+                    </ContentForgotPassword>
+
                     <ButtonPersonalizado
                         title="Entrar"
                         variant="primary"
@@ -71,7 +80,7 @@ const Login: React.FC = () => {
                 </ContentBody>
 
                 <ContentFooter>
-                    <ButtonSignUp>
+                    <ButtonSignUp onPress={() => {}}>
                         <TitleButtonSignUp1>Não tem cadastro ainda?</TitleButtonSignUp1>
                         <TitleButtonSignUp2>Cadastre-se</TitleButtonSignUp2>
                     </ButtonSignUp>
