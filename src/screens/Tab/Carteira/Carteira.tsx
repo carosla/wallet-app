@@ -21,7 +21,8 @@ import {
   IconPayOut,
   IconTopUp,
   TitleNomeCartao,
-  TitleTransfer
+  TitleTransfer,
+  Footer
 } from './styles'
 import { Header } from '../../../components/Header/Header'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -62,6 +63,10 @@ export const Carteira = () => {
             <TitleTransfer>Mais opções</TitleTransfer>
           </TouchableOpacity>
         </Body>
+
+        <Footer>
+
+        </Footer>
       </ViewContainer>
       
     </Container>
