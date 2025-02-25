@@ -1,4 +1,5 @@
-import styled from 'styled-components/native';
+import { Pressable } from 'react-native';
+import styled, { DefaultTheme } from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
@@ -31,4 +32,13 @@ export const ButtonText = styled.Text`
   color: white;
   font-size: 18px;
   font-weight: bold;
+`;
+
+export const ButtonGoBack = styled(Pressable)`
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: ${({ theme }: {theme: DefaultTheme}) => theme.COLORS.GRAY4};
 `;
