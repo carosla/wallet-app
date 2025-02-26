@@ -9,6 +9,7 @@ import { AddCartao } from '../screens/App/AddCartao'
 import { DetailsCard } from '../screens/App/DetailsCard'
 import { Transacao } from '../screens/App/Transacao';
 import { Carteira } from '../screens/Tab/Carteira';
+import { limited_transaction } from '@src/utils/limited_transactions';
 
 const {Navigator, Screen} = createNativeStackNavigator()
 

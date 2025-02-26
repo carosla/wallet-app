@@ -15,7 +15,7 @@ export const Transacao = () => {
 
   const handleSendData = () => {
     if (title.trim() !== '' && subtitle.trim() !== '' && price.trim() !== '') {
-      navigation.navigate('Carteira', { title, subtitle, price });
+      navigation.navigate('Carteira');
     }
   };
 

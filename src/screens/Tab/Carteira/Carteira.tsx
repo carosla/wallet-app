@@ -1,14 +1,15 @@
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react'
-import { limited_transaction } from "../../../utils/limited_transactions";
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 
-import Tranfer from '../../../assets/convert.png';
 import Payments from '../../../assets/export.png';
-import PayOut from '../../../assets/money-send.png'
+import Transfer from '../../../assets/convert.png';
 import TopUp from '../../../assets/add-circle.png';
+import PayOut from '../../../assets/money-send.png';
 import EllipseOnePng from '../../../assets/ellipse1.png';
 import EllipseTwoPng from '../../../assets/ellipse2.png';
-
+import { Header } from '../../../components/Header/Header';
+import { limited_transaction } from "../../../utils/limited_transactions";
 import {
     Container,
     Content,
@@ -41,11 +42,7 @@ import {
     AmountTransaction,
     EllipseOne,
     EllipseTwo,
-} from './styles'
-import { Header } from '../../../components/Header/Header'
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-import { transaction } from '@src/utils/transaction';
-
+} from './styles';
 
 export const Carteira = () => {
     const navigation = useNavigation();
@@ -53,6 +50,7 @@ export const Carteira = () => {
     const hadleGoTransaction = () => {
         navigation.navigate('Transaction')
     }
+
     return (
         <Container>
             <Header
@@ -77,7 +75,7 @@ export const Carteira = () => {
                 </Content>
 
                 <Body>
-                    <TouchableOpacity style={{ alignItems: 'center' }}>
+                <TouchableOpacity style={{ alignItems: 'center' }}>
                         <IconPayment source={Payments} />
                         <TitlePayments>Recebtos</TitlePayments>
                     </TouchableOpacity>

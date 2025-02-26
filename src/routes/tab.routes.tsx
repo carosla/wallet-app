@@ -8,6 +8,8 @@ import { Carteira } from '../screens/Tab/Carteira'
 import { Notificacao } from '../screens/Tab/Notificacao'
 import { Relatorio } from '../screens/Tab/Relatorio'
 import { Settings } from '../screens/Tab/Settings'
+import { limited_transaction } from '@src/utils/limited_transactions'
+import { Transaction } from '@src/screens/App/Transactions'
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -125,6 +127,36 @@ export const TabRoutes = () => {
         component={Settings}
         options={{
           tabBarLabel: 'Settings',
+          tabBarIcon: ({ focused }) => (
+            <View
+            style={{
+              marginTop: 5,
+              alignItems: 'center',
+              justifyContent: 'center',
+          }}
+            >
+              {focused ? (
+              <GearSix 
+                size={25} 
+                weight='light'
+                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+              />
+              ) : (
+                <GearSix
+                size={25} 
+                weight='fill'
+                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+              />
+              )}
+              </View>
+          )
+        }}
+      />
+      <Screen 
+        name='Transaction' 
+        component={Transaction}
+        options={{
+          tabBarLabel: 'Transaction',
           tabBarIcon: ({ focused }) => (
             <View
             style={{
