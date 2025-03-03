@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Container, Input, Button, ButtonText } from './styles';
+import { Container, Button, ButtonText } from './styles';
 import { Text } from 'react-native';
 import { CaretDoubleLeft } from 'phosphor-react-native';
 import {
   ButtonGoBack,
 } from './styles';
+import InputTransaction from '../../../components/input_old';
+import InputValor from '../../../components/Input_Valor';
+import { ButtonPersonalizado } from "../../../components/ButtonPersonalizado/ButtonPersonalizado"
 
 export const Transacao = () => {
   const navigation = useNavigation();
@@ -24,32 +27,35 @@ export const Transacao = () => {
 }
 
   return (
+
     <Container>
+      <InputValor
+        placeholder="R$ 0,00"
+        keyboardType="numeric"
+        value={price}
+        onChangeText={setPrice}    />
+
       <Text>Digite o título da transação:</Text>
-      <Input
+      <InputTransaction
+        name='titulo'
         placeholder="Ex: Compra no mercado"
         value={title}
         onChangeText={setTitle}
       />
 
       <Text>Digite a descrição:</Text>
-      <Input
+      <InputTransaction
+        name='descricao'
         placeholder="Ex: Compras do mês"
         value={subtitle}
         onChangeText={setSubtitle}
       />
 
-      <Text>Digite o valor da transação:</Text>
-      <Input
-        placeholder="R$ 0,00"
-        keyboardType="numeric"
-        value={price}
-        onChangeText={setPrice}
-      />
+      
 
-      <Button onPress={handleSendData}>
+      <ButtonPersonalizado title='' onPress={handleSendData}>
         <ButtonText>Enviar</ButtonText>
-      </Button>
+      </ButtonPersonalizado>
       <ButtonGoBack onPress={handleGoBackHome}>
         <CaretDoubleLeft size={32} weight="light" />
       </ButtonGoBack>

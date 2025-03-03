@@ -29,7 +29,7 @@ interface InputProps extends TextInputProps {
 
 import { Container, IConContainer, InputText } from './styles';
 
-const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({
+const InputTransaction: React.ForwardRefRenderFunction<InputRef, InputProps> = ({
     iconName,
     name,
     value,
@@ -46,22 +46,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({
     return (
         <Container style={containerStyle}>
 
-            <IConContainer
-                isFilled={isFilled}
-                hasErrors={hasErrors}
-                isFocused={isFocused}>
-
-                <Ionicons
-                    name={'mail'}
-                    size={40}
-                    color={ 
-                        
-                        isFocused || hasErrors || isFilled
-                        ? theme.COLORS.BLUE1
-                        : theme.COLORS.GRAY5
-                    }
-                />
-            </IConContainer>
+            
 
             <InputText
                 isFilled={isFilled}
@@ -72,4 +57,4 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({
     )
 }
 
-export { Input };
+export default InputTransaction;

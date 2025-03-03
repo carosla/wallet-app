@@ -152,36 +152,7 @@ export const TabRoutes = () => {
           )
         }}
       />
-      <Screen 
-        name='Transaction' 
-        component={Transaction}
-        options={{
-          tabBarLabel: 'Transaction',
-          tabBarIcon: ({ focused }) => (
-            <View
-            style={{
-              marginTop: 5,
-              alignItems: 'center',
-              justifyContent: 'center',
-          }}
-            >
-              {focused ? (
-              <GearSix 
-                size={25} 
-                weight='light'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
-              />
-              ) : (
-                <GearSix
-                size={25} 
-                weight='fill'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
-              />
-              )}
-              </View>
-          )
-        }}
-      />
+
     </Navigator>
   )
 }
