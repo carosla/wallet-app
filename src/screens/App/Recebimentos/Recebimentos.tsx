@@ -20,7 +20,7 @@ import DropdownInput from "@src/components/Dropdown";
 import theme from "../../../styles/theme";
 import { Header } from "@src/components/Header/Header";
 
-export const Transacao = () => {
+export const Recebimentos = () => {
   const navigation = useNavigation();
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
@@ -46,7 +46,7 @@ export const Transacao = () => {
 
   return (
     <><ContainerHeader>
-      <Header appName="Pagamentos" />
+      <Header appName="Recebimentos" />
     </ContainerHeader>
     <Container>
 

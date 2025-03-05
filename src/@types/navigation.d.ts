@@ -7,6 +7,7 @@ export declare global {
             Profile: undefined,
             AddCartao: undefined,
             Transacao: undefined,
+            Recebimentos: undefined,
             Carteira: undefined,
 
             DetailsCard: undefined,
