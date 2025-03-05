@@ -1,26 +1,32 @@
 import React, { useState } from "react";
-import Icon from '@expo/vector-icons/Ionicons'
-import { useTheme } from "styled-components";
-import { TextInputProps, TouchableOpacity } from "react-native";
-import COLORS from "../../styles/theme";
+import { TextInputProps, View } from "react-native";
+import { Container, ContainerValor, InputContainer } from "./styles";
+import { TextAlignCenter } from "phosphor-react-native";
 
-import { Container, InputContainer } from "./styles";
-interface InputProps {
+interface InputProps extends TextInputProps {
+    placeholder?: string;
+    value: string;
 }
 
-const InputValor: React.FC<InputProps & TextInputProps> = ({
-}: InputProps) => {
-
+const InputValor: React.FC<InputProps> = ({ placeholder, value, ...rest }) => {
     const [isFocused, setIsFocused] = useState(false);
 
 
     return (
         <Container>
-            <InputContainer 
-                placeholderTextColor={COLORS.COLORS.GRAY3}
+            <ContainerValor>
+            
+            <InputContainer
+                placeholder={placeholder}
+                value={value}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                {...rest}
             /> 
-        </Container>
-    )
-}
+            </ContainerValor>
 
-export default InputValor
+        </Container>
+    );
+};
+
+export default InputValor;

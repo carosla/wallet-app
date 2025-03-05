@@ -9,6 +9,30 @@ export const Container = styled.View`
   background-color: #f5f5f5;
 `;
 
+export const ContainerValor = styled.View`
+  flex-direction: row;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSBOLD};
+`;
+
+export const ContainerAtributos = styled.View`
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font-family: ${({theme}: {theme: DefaultTheme}) => theme.FONTS.POPPINSBOLD};
+`;
+
+export const ContainerButton = styled.View`
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+`;
+
 export const Input = styled.TextInput`
   width: 100%;
   height: 50px;
@@ -20,9 +44,9 @@ export const Input = styled.TextInput`
 `;
 
 export const Button = styled.TouchableOpacity`
-  width: 100%;
+  width: 100px;
   height: 50px;
-  background-color: #007bff;
+  background-color:rgb(197, 203, 211);
   justify-content: center;
   align-items: center;
   border-radius: 10px;

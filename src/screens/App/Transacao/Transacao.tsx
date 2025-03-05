@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Container, Button, ButtonText } from './styles';
+import { Container, ButtonText, ContainerAtributos, Button, ContainerButton, ContainerValor } from './styles';
 import { Text } from 'react-native';
 import { CaretDoubleLeft } from 'phosphor-react-native';
 import {
   ButtonGoBack,
 } from './styles';
-import InputTransaction from '../../../components/input_old';
+import InputDescricao from '../../../components/Input_Descricao';
 import InputValor from '../../../components/Input_Valor';
 import { ButtonPersonalizado } from "../../../components/ButtonPersonalizado/ButtonPersonalizado"
+import COLORS from "../../../styles/theme";
+import DropdownInput from '@src/components/Dropdown';
+import theme from '../../../styles/theme';
 
 export const Transacao = () => {
   const navigation = useNavigation();
@@ -24,38 +27,63 @@ export const Transacao = () => {
 
   const handleGoBackHome = () => {
     navigation.goBack()
-}
+  }
+
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+  const options = [
+    { label: "Opção 1", value: "opcao1" },
+    { label: "Opção 2", value: "opcao2" },
+    { label: "Opção 3", value: "opcao3" },
+  ];
 
   return (
 
     <Container>
-      <InputValor
-        placeholder="R$ 0,00"
-        keyboardType="numeric"
-        value={price}
-        onChangeText={setPrice}    />
+        <ContainerValor>
+        <Text style={{
+          fontFamily: theme.FONTS.POPPINSBOLD, 
+          marginRight: 5, 
+          fontSize: 20
+        }}>R$</Text>
+        <InputValor
+          placeholder="0,00"
+          keyboardType="numeric"
+          value={price}
+          onChangeText={setPrice}
+          placeholderTextColor={COLORS.COLORS.BLACK}
+        />
+        </ContainerValor>
+     
 
-      <Text>Digite o título da transação:</Text>
-      <InputTransaction
-        name='titulo'
-        placeholder="Ex: Compra no mercado"
-        value={title}
-        onChangeText={setTitle}
-      />
+     <ContainerAtributos>
+        <InputDescricao
+          placeholder="Entre com a descrição"
+          value={title}
+          onChangeText={setTitle}
 
-      <Text>Digite a descrição:</Text>
-      <InputTransaction
-        name='descricao'
-        placeholder="Ex: Compras do mês"
-        value={subtitle}
-        onChangeText={setSubtitle}
-      />
+        />
 
-      
 
-      <ButtonPersonalizado title='' onPress={handleSendData}>
-        <ButtonText>Enviar</ButtonText>
-      </ButtonPersonalizado>
+        <DropdownInput selectedValue={selectedValue}
+          onValueChange={setSelectedValue}
+          options={options} 
+          />
+      </ContainerAtributos>
+    
+
+      <ContainerButton style={{zIndex:-1}}>  
+      <Button title='' onPress={handleSendData}>
+          <ButtonText>Enviar</ButtonText>
+      </Button>
+      </ContainerButton>
+
+     
+
+
+
+
+
       <ButtonGoBack onPress={handleGoBackHome}>
         <CaretDoubleLeft size={32} weight="light" />
       </ButtonGoBack>
