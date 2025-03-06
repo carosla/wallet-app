@@ -85,11 +85,11 @@ export const Carteira = () => {
             <TitlePayOut>Pagtos</TitlePayOut>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("DetailsCard")}
+            onPress={() => navigation.navigate("Categorias")}
             style={{ alignItems: "center" }}
           >
             <IconTopUp source={TopUp} />
-            <TitleTopUp>+ Opções</TitleTopUp>
+            <TitleTopUp>Categorias</TitleTopUp>
           </TouchableOpacity>
         </Body>
       </ViewContainer>

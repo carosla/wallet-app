@@ -9,6 +9,7 @@ import { AddCartao } from '../screens/App/AddCartao'
 import { DetailsCard } from '../screens/App/DetailsCard'
 import { Transacao } from '../screens/App/Transacao';
 import { Recebimentos } from '../screens/App/Recebimentos';
+import { Categorias } from '../screens/App/Categorias';
 import { Carteira } from '../screens/Tab/Carteira';
 import { limited_transaction } from '@src/utils/limited_transactions';
 
@@ -29,6 +30,7 @@ export const AppRoutes = () => {
       <Screen name='DetailsCard' component={DetailsCard} />
       <Screen name='Transacao' component={Transacao} />
       <Screen name='Recebimentos' component={Recebimentos} />
+      <Screen name='Categorias' component={Categorias} />
       <Screen name='Carteira' component={Carteira} />
     </Navigator>
   )

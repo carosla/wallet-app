@@ -9,7 +9,7 @@ export declare global {
             Transacao: undefined,
             Recebimentos: undefined,
             Carteira: undefined,
-
+            Categorias: undefined,
             DetailsCard: undefined,
             Transaction: undefined,
         }
