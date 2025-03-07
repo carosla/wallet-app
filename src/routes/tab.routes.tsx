@@ -16,19 +16,26 @@ const {Navigator, Screen} = createBottomTabNavigator();
 export const TabRoutes = () => {
   return (
     <Navigator
+      
       initialRouteName='Carteira'
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel: true,
-        tabBarInactiveTintColor: theme.COLORS.GRAY4,
-        tabBarActiveTintColor: theme.COLORS.GRAY1,
+        tabBarShowLabel: false,
+        tabBarInactiveTintColor: theme.COLORS.WHITE,
+        tabBarActiveTintColor: theme.COLORS.WHITE,
         tabBarStyle: {
-          backgroundColor: theme.COLORS.GRAY6,
-          height: 55
-        },
-        tabBarLabelStyle: {
-          fontSize: 11,
-          color: theme.COLORS.GRAY3,
+          backgroundColor: theme.COLORS.WHITE,
+          height: 70,
+          width: 250,
+          bottom: 20,
+          alignSelf: 'center',
+          borderRadius: 60,
+          shadowOpacity: 0.1,
+          shadowRadius: 10,
+          shadowOffset: { width: 2, height: 10 }, 
+          shadowColor: theme.COLORS.PURPLEDARK1,
+          elevation: 5, 
+          borderColor: 'transparent'
         }
       }}
     >
@@ -40,29 +47,29 @@ export const TabRoutes = () => {
           tabBarIcon: ({ focused }) => (
             <View
             style={{
-              marginTop: 5,
+              marginTop: 30,
               alignItems: 'center',
               justifyContent: 'center',
           }}
             >
               {focused ? (
               <CreditCard 
-                size={25} 
+                size={27} 
                 weight='light'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               ) : (
                 <CreditCard 
-                size={25} 
+                size={27} 
                 weight='fill'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               )}
             </View>
           ),
         }}
       />
-      <Screen 
+      {/* <Screen 
         name='Notificacao' 
         component={Notificacao}
         options={{
@@ -79,19 +86,19 @@ export const TabRoutes = () => {
               <Bell 
                 size={25} 
                 weight='light'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               ) : (
                 <Bell 
                 size={25} 
                 weight='fill'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               )}
               </View>
           )
         }}
-      />
+      /> */}
       <Screen 
         name='Relatorio' 
         component={Relatorio}
@@ -100,22 +107,22 @@ export const TabRoutes = () => {
           tabBarIcon: ({ focused }) => (
             <View
             style={{
-              marginTop: 5,
+              marginTop: 30,
               alignItems: 'center',
               justifyContent: 'center',
           }}
             >
               {focused ? (
               <ChartBar 
-                size={25} 
+                size={27} 
                 weight='light'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               ) : (
                 <ChartBar 
-                size={25} 
+                size={27} 
                 weight='fill'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               )}
               </View>
@@ -130,22 +137,22 @@ export const TabRoutes = () => {
           tabBarIcon: ({ focused }) => (
             <View
             style={{
-              marginTop: 5,
+              marginTop: 30,
               alignItems: 'center',
               justifyContent: 'center',
           }}
             >
               {focused ? (
               <GearSix 
-                size={25} 
+                size={27} 
                 weight='light'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               ) : (
                 <GearSix
-                size={25} 
+                size={27} 
                 weight='fill'
-                color={focused ? theme.COLORS.GRAY1 : theme.COLORS.GRAY3}
+                color={focused ? theme.COLORS.PURPLEDARK1 : theme.COLORS.PURPLEDARK2}
               />
               )}
               </View>

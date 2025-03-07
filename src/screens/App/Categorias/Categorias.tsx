@@ -9,6 +9,7 @@ import {
   ContainerHeader,
   ContainerImage,
   ImageCategoria,
+  ImageButton,
 } from "./styles";
 import { CaretDoubleLeft } from "phosphor-react-native";
 import { ButtonGoBack } from "./styles";
@@ -56,7 +57,10 @@ export const Categorias = () => {
             elevation: 6,
           }}
         >
-          <ImageCategoria source={Edit}/>
+          <ImageButton>
+            <ImageCategoria source={Edit} />
+          </ImageButton>
+
 
 
         </ContainerImage>

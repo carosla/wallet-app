@@ -28,12 +28,16 @@ export const ContainerImage = styled.View`
 
 `;
 
-export const ImageCategoria = styled.Image`
+export const ImageButton = styled.TouchableOpacity`
     width: 56px;
     height: 56px;
     justify-content: center;
     align-items: center;
-    background-image: url(${Edit});
+`;
+
+export const ImageCategoria = styled.Image`
+  width: 52px;
+  height: 52px;
 `;
 
 export const ContainerAtributos = styled.View`
