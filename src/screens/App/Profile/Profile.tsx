@@ -29,11 +29,11 @@ export const Profile = () => {
                 <Header>
                     <Avatar
                         source={{
-                            uri: 'http://github.com/silvaneimartins.png'
+                            uri: 'https://avatars.githubusercontent.com/u/89313900?v=4'
                         }}
                     />
                     <ViewHeader>
-                        <HeaderName>Silvanei</HeaderName>
+                        <HeaderName>Ana Carolina</HeaderName>
                         <IconButton>
                             <Pen
                                 size={25}
