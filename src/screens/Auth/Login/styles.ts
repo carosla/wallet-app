@@ -13,7 +13,7 @@ export const ContentHeader = styled.View`
     justify-content: space-between;
 `;
 
-export const ContentBody = styled.View``;
+export const ContentBody = styled.Text``;
 
 export const ViewButton = styled.View`
     flex-direction: row;

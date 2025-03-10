@@ -67,7 +67,7 @@ export const Relatorio = () => {
                                     <SubtTitleTransaction>{item.subtitle}</SubtTitleTransaction>
                                 </DetailsTransaction>
 
-                                <AmountTransaction>R$ {item.amount}</AmountTransaction>
+                                <AmountTransaction>R$ {item.price}</AmountTransaction>
                             </ContentFlat>
                         )}
                         ListHeaderComponent={

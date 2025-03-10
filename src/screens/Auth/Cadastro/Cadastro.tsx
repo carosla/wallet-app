@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTheme } from "styled-components/native";
 import { useNavigation } from '@react-navigation/native';
-import { KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
 
 import Input from '../../../components/Input';
 import { ButtonPersonalizado } from "../../../components/ButtonPersonalizado";
-import { Login } from "../Login/Login";
+import { registerUser } from "../../../services/authService";
+
 import {
     Container,
     ContentHeader,
@@ -19,6 +20,9 @@ import {
 } from "./styles";
 
 export const Cadastro = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const { COLORS } = useTheme();
     const navigation  = useNavigation();
 
@@ -26,11 +30,18 @@ export const Cadastro = () => {
         navigation.navigate('Login');
     }
 
+    const handleCadastro = async () => {
+        try {
+            const userData = { name, email, password };
+            await registerUser(userData); // Chama a função do authService
+            Alert.alert('Cadastro realizado com sucesso!');
+            navigation.navigate('Login'); // Redireciona para o Login
+        } catch (error: any) {
+            Alert.alert(error.message);
+        }
+    };
+
     return (
-        // <KeyboardAvoidingView
-        //     behavior="position"
-        //     enabled
-        // >
         <Container>
             <ScrollView
                 showsVerticalScrollIndicator={false}
@@ -51,6 +62,8 @@ export const Cadastro = () => {
                         iconColor={COLORS.GRAY2}
                         iconName="person-outline"
                         placeholder="Digite seu nome"
+                        value={name}
+                        onChangeText={setName}
                     />
 
                     <Input
@@ -63,6 +76,8 @@ export const Cadastro = () => {
                         iconName="mail-outline"
                         keyboardType='email-address'
                         placeholder="Digite seu e-mail"
+                        value={email}
+                        onChangeText={setEmail}
                     />
 
                     <Input
@@ -76,11 +91,13 @@ export const Cadastro = () => {
                         iconColor={COLORS.GRAY2}
                         iconName="lock-closed-outline"
                         placeholder="Digite sua senha"
+                        value={password}
+                        onChangeText={setPassword}
                     />
 
                     <ButtonPersonalizado
                         title="Cadastrar"
-                        onPress={() => { }}
+                        onPress={handleCadastro}
                         style={{
                             marginTop: 50,
                         }}
@@ -95,6 +112,5 @@ export const Cadastro = () => {
                 </ContentFoooter>
             </ScrollView>
         </Container>
-        // </KeyboardAvoidingView>
     );
 };

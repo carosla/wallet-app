@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { KeyboardAvoidingView, Pressable, SafeAreaView, Text } from "react-native";
 
@@ -24,9 +24,16 @@ import {
 import COLORS from "../../../styles/theme";
 import { ButtonPersonalizado } from "@src/components/ButtonPersonalizado";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { setItem } from "../../../services/storageService"; // Método para salvar o token no armazenamento local
+
 
 const Login: React.FC = () => {
     const navigation = useNavigation()
+    const [email, setEmail] = useState(""); // Estado para armazenar o email
+    const [senha, setSenha] = useState(""); // Estado para armazenar a senha
+    const [error, setError] = useState<string>(""); // Estado para exibir possíveis erros de login
+
 
     const handleCadastro = () => {
         navigation.navigate('Cadastro');
@@ -35,6 +42,25 @@ const Login: React.FC = () => {
     const handleRecuperarSenha = () => {
         navigation.navigate('RecuperarSenha');
     }
+
+    const handleLogin = async () => {
+        try {
+          // Enviar a requisição para o backend com as credenciais
+          const response = await axios.post(
+            "http://localhost:3000/api/auth/login", // URL do seu backend
+            { email, password: senha }
+          );
+    
+          if (response.data.token) {
+            // Salvar o token no armazenamento local
+            await setItem("token", response.data.token);
+            navigation.navigate("Carteira"); // Navegar para a tela principal após o login bem-sucedido
+          }
+        } catch (err) {
+          setError("Email ou senha inválidos"); // Exibir mensagem de erro
+        }
+      };
+
     return (
             <KeyboardAvoidingView
                 behavior="position"
@@ -55,6 +81,7 @@ const Login: React.FC = () => {
                 </ContentHeader>
 
                 <ContentBody>
+                {error && <Text style={{ color: 'red' }}>{error}</Text>} {/* Exibir erro se houver */}
                     <Input 
                         leftIcon 
                         iconSize={25} 
@@ -64,6 +91,8 @@ const Login: React.FC = () => {
                         autoCapitalize="none"
                         iconName="mail-outline" 
                         placeholder="Digite seu e-mail"
+                        value={email}
+                        onChangeText={setEmail} // Atualizar o estado com o email digitado
                     />
                     <Input 
                         leftIcon  
@@ -75,6 +104,8 @@ const Login: React.FC = () => {
                         autoCapitalize="none"
                         iconName="lock-closed-outline"
                         placeholder="Digite sua senha"
+                        value={senha}
+                        onChangeText={setSenha} // Atualizar o estado com a senha digitada
                     />
 
                     <ContentForgotPassword>
@@ -91,7 +122,7 @@ const Login: React.FC = () => {
                     <ButtonPersonalizado
                         title="Entrar"
                         variant="primary"
-                        onPress={() => {}}
+                        onPress={handleLogin}
                         style={{ marginBottom: 20 }}
                     />
                 </ContentBody>
