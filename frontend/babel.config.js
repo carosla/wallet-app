@@ -21,7 +21,15 @@ module.exports = function (api) {
           },
         },
       ],
-      "module:react-native-dotenv", // Mantenha esse para variáveis de ambiente
+      [
+        "module:react-native-dotenv",
+        {
+          moduleName: "@env",
+          path: ".env",
+          safe: true,
+          allowUndefined: false,
+        },
+      ],
     ],
   };
 };

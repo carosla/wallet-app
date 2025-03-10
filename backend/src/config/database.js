@@ -1,17 +1,29 @@
-const { Sequelize } = require("sequelize");
-require("dotenv").config();
+require('dotenv').config(); // Carregar variáveis do arquivo .env
 
-const sequelize = new Sequelize(process.env.PGDATABASE, process.env.PGUSER, process.env.PGPASSWORD, {
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize({
   host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  username: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
-  dialect: "postgres",
-  logging: false, // Para não poluir o console com logs
+  dialect: 'postgres',
+  logging: false, // Para desativar logs SQL, use 'true' para depuração
   dialectOptions: {
     ssl: {
-      require: true, // Ativa o SSL
-      rejectUnauthorized: false, // Ignora a verificação de certificado
+      require: true, // Exige SSL
+      rejectUnauthorized: false, // Para aceitar certificados SSL autoassinados
     },
   },
 });
+
+sequelize.authenticate()
+  .then(() => {
+    console.log("📡 Banco de dados conectado com sucesso!");
+  })
+  .catch((error) => {
+    console.error("❌ Erro ao conectar no banco de dados:", error.message);
+  });
 
 module.exports = sequelize;

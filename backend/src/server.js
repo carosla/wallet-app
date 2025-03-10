@@ -1,31 +1,27 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { sequelize, syncDB } = require("./models");
+
+const sequelize = require("./config/database");
 const authRoutes = require("./routes/authRoutes");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
-const PORT = process.env.PORT || 3000;
+app.get("/", (req, res) => {
+  res.send("API está rodando!");
+});
 
-const startServer = async () => {
+app.listen(PORT, async () => {
   try {
     await sequelize.authenticate();
-    console.log("Conectado ao banco de dados!");
-
-    await syncDB();
-
-    app.listen(PORT, () => {
-      console.log(`Servidor rodando na porta ${PORT}`);
-    });
+    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
   } catch (error) {
-    console.error("Erro ao conectar ao banco:", error);
+    console.error("❌ Erro ao conectar no banco:", error);
   }
-};
-
-startServer();
+});
