@@ -12,6 +12,7 @@ export declare global {
             Categorias: undefined,
             DetailsCard: undefined,
             Transaction: undefined,
+            AppRoutes: undefined,
         }
     }
 }

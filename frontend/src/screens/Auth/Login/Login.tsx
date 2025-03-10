@@ -37,6 +37,7 @@ const Login: React.FC = () => {
 
     const handleCadastro = () => {
         navigation.navigate('Cadastro');
+
     }
 
     const handleRecuperarSenha = () => {
@@ -54,7 +55,7 @@ const Login: React.FC = () => {
           if (response.data.token) {
             // Salvar o token no armazenamento local
             await setItem("token", response.data.token);
-            navigation.navigate("Carteira"); // Navegar para a tela principal após o login bem-sucedido
+            navigation.navigate('AppRoutes');
           }
         } catch (err) {
           setError("Email ou senha inválidos"); // Exibir mensagem de erro

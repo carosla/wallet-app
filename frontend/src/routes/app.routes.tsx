@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -11,7 +10,6 @@ import { Transacao } from '../screens/App/Transacao';
 import { Recebimentos } from '../screens/App/Recebimentos';
 import { Categorias } from '../screens/App/Categorias';
 import { Carteira } from '../screens/Tab/Carteira';
-import { limited_transaction } from '@src/utils/limited_transactions';
 
 const {Navigator, Screen} = createNativeStackNavigator()
 

@@ -16,10 +16,6 @@ import {
 
 import { DMSans_400Regular } from "@expo-google-fonts/dm-sans"
 import { DMSerifDisplay_400Regular } from "@expo-google-fonts/dm-serif-display"
-
-import COLORS from "../src/styles/theme"
-
-import { Login } from "./screens/Auth/Login/Login";
 import theme from "../src/styles/theme";
 import {Routes} from './routes'
 

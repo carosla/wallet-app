@@ -1,22 +1,18 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { View } from 'react-native'
-import {Bell, ChartBar, CreditCard, Gear, GearSix} from 'phosphor-react-native'
+import { ChartBar, CreditCard, GearSix} from 'phosphor-react-native'
 
 import theme from '../styles/theme'
 import { Carteira } from '../screens/Tab/Carteira'
-import { Notificacao } from '../screens/Tab/Notificacao'
 import { Relatorio } from '../screens/Tab/Relatorio'
 import { Settings } from '../screens/Tab/Settings'
-import { limited_transaction } from '@src/utils/limited_transactions'
-import { Transaction } from '@src/screens/App/Transactions'
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
 export const TabRoutes = () => {
   return (
     <Navigator
-      
       initialRouteName='Carteira'
       screenOptions={{
         headerShown: false,
