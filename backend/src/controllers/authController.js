@@ -37,7 +37,7 @@ const registrar = async (req, res) => {
 
     res.status(201).json({
       mensagem: "Usuário cadastrado com sucesso",
-      usuario: { id: novoUsuario.usuario_ID, email: novoUsuario.email, login: novoUsuario.login },
+      usuario: { id: novoUsuario.usuario_id, email: novoUsuario.email, login: novoUsuario.login },
     });
   } catch (error) {
     console.error("🔥 Erro ao registrar usuário:", error);
@@ -71,13 +71,13 @@ const login = async (req, res) => {
       return res.status(401).json({ mensagem: "Credenciais inválidas" });
     }
 
-    const token = gerarToken(usuario.usuario_ID);
+    const token = gerarToken(usuario.usuario_id);
     console.log("✅ Token gerado:", token);
 
     res.json({
       mensagem: "Login bem-sucedido",
       token,
-      usuario: { id: usuario.usuario_ID, email: usuario.email, login: usuario.login }
+      usuario: { id: usuario.usuario_id, email: usuario.email, login: usuario.login }
     });
 
   } catch (error) {

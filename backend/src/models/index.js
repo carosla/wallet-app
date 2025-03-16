@@ -1,5 +1,6 @@
 const sequelize = require("../config/database");
 const Usuario = require("./usuario");
+const Categoria = require('./categoria')
 
 const syncDB = async () => {
   try {
@@ -10,4 +11,5 @@ const syncDB = async () => {
   }
 };
 
-module.exports = { sequelize, Usuario, syncDB };
+module.exports = { sequelize, Usuario, Categoria, syncDB };
+

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";  // Importando o axios
 import {
   Container,
   ButtonText,
@@ -16,17 +17,30 @@ import { ButtonGoBack } from "./styles";
 import InputDescricao from "../../../components/Input_Descricao";
 import COLORS from "../../../styles/theme";
 import { Header } from "@src/components/Header/Header";
-import Edit from '../../../assets/edit.png'
+import Edit from '../../../assets/edit.png';
 
 export const Categorias = () => {
   const navigation = useNavigation();
-  const [title, setTitle] = useState("");
-  const [subtitle, setSubtitle] = useState("");
-  const [price, setPrice] = useState("");
+  const [categoria, setCategoria] = useState(""); // Estado para armazenar a categoria
 
-  const handleSendData = () => {
-    if (title.trim() !== "" && subtitle.trim() !== "" && price.trim() !== "") {
-      navigation.navigate("Carteira");
+  const handleSendData = async () => {
+    // Verifique se os campos estão preenchidos
+    if (categoria.trim() !== "") {
+      try {
+        // Enviar dados para o backend (API)
+        const response = await axios.post('http://localhost:3000/api/categories', {categoria});  // Substitua pelo seu endpoint real
+        
+        // Verifica a resposta da API
+        if (response.status === 201) {
+          navigation.navigate('TabRoutes'); // Navega para a tela de Carteira
+        } else {
+          console.error("Erro ao cadastrar categoria:", response.data);
+        }
+      } catch (error) {
+        console.error("Erro na requisição:", error);
+      }
+    } else {
+      alert("Preencha todos os campos.");
     }
   };
 
@@ -34,20 +48,12 @@ export const Categorias = () => {
     navigation.goBack();
   };
 
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
-
-  const options = [
-    { label: "Entrada", value: "entrada" },
-    { label: "Saída", value: "saida" },
-    { label: "Opção 3", value: "opcao3" },
-  ];
-
   return (
-    <><ContainerHeader>
-      <Header appName="Categorias" />
-    </ContainerHeader>
+    <>
+      <ContainerHeader>
+        <Header appName="Categorias" />
+      </ContainerHeader>
       <Container>
-
         <ContainerImage
           style={{
             shadowColor: COLORS.COLORS.BLACK,
@@ -60,30 +66,25 @@ export const Categorias = () => {
           <ImageButton>
             <ImageCategoria source={Edit} />
           </ImageButton>
-
-
-
         </ContainerImage>
 
         <ContainerAtributos>
           <InputDescricao
             placeholder="Entre com o nome da categoria"
-            value={title}
-            onChangeText={setTitle} />
+            value={categoria}  // Usando o estado correto
+            onChangeText={setCategoria}  // Atualiza o estado corretamente
+          />
         </ContainerAtributos>
 
         <ContainerButton style={{ zIndex: -1 }}>
           <Button
             title=""
-            onPress={handleSendData}
+            onPress={handleSendData}  // Chama a função para enviar os dados
             style={{
-              // Sombra para iOS
               shadowColor: COLORS.COLORS.PURPLEDARK2,
               shadowOffset: { width: 0, height: 4 },
               shadowOpacity: 0.3,
               shadowRadius: 4,
-
-              // Sombra para Android
               elevation: 6,
             }}
           >
@@ -94,6 +95,7 @@ export const Categorias = () => {
         <ButtonGoBack onPress={handleGoBackHome}>
           <CaretDoubleLeft size={25} weight="light" />
         </ButtonGoBack>
-      </Container></>
+      </Container>
+    </>
   );
 };

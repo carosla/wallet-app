@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import { KeyboardAvoidingView, Pressable, SafeAreaView, Text } from "react-native";
+import { KeyboardAvoidingView, Text } from "react-native";
 
 import Input from "../../../components/Input/input";
-import { Button } from "../../../components/Button";
 import { ButtonSocialGoogle } from "../../../components/ButtonSocialGoogle/ButtonSocialGoogle";
 import { ButtonSocial } from "../../../components/ButtonSocial/ButtonSocial";
 import {
@@ -21,7 +20,6 @@ import {
     ContentButtonForgotPassword,
     ContentTitleForgotPassword
 } from "./styles";
-import COLORS from "../../../styles/theme";
 import { ButtonPersonalizado } from "@src/components/ButtonPersonalizado";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
