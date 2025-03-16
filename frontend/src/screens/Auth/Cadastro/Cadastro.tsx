@@ -20,7 +20,7 @@ import {
 } from "./styles";
 
 export const Cadastro = () => {
-    const [name, setName] = useState('');
+    const [login, setLogin] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { COLORS } = useTheme();
@@ -32,7 +32,7 @@ export const Cadastro = () => {
 
     const handleCadastro = async () => {
         try {
-            const userData = { name, email, password };
+            const userData = { login, email, password };
             await registerUser(userData); // Chama a função do authService
             Alert.alert('Cadastro realizado com sucesso!');
             navigation.navigate('Login'); // Redireciona para o Login
@@ -62,8 +62,8 @@ export const Cadastro = () => {
                         iconColor={COLORS.GRAY2}
                         iconName="person-outline"
                         placeholder="Digite seu nome"
-                        value={name}
-                        onChangeText={setName}
+                        value={login}
+                        onChangeText={setLogin}
                     />
 
                     <Input

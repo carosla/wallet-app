@@ -3,7 +3,7 @@ import {API_URL} from '@env' // Se estiver usando o dotenv para gerenciar variá
 console.log(API_URL);
 
 // Função de cadastro
-export const registerUser = async (data: { name: string; email: string; password: string }) => {
+export const registerUser = async (data: { login: string; email: string; password: string }) => {
     try {
         const response = await axios.post(`${API_URL}/api/auth/register`, data);
         return response.data; // Pode retornar a resposta que você precisa, como um token, ou mensagem de sucesso

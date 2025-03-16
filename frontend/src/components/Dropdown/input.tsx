@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Container } from "./styles";
 import COLORS from "../../styles/theme";
@@ -14,8 +14,13 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
   onValueChange,
   options,
 }) => {
-  const [open, setOpen] = React.useState(false);
-  const [items, setItems] = React.useState(options);
+  const [open, setOpen] = useState(false);
+  const [items, setItems] = useState(options);
+
+  // Atualizar os itens com as opções passadas sempre que as opções mudarem
+  useEffect(() => {
+    setItems(options);
+  }, [options]);
 
   return (
     <Container>
@@ -27,7 +32,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
         setValue={(callback) => {
           const newValue =
             typeof callback === "function" ? callback(selectedValue) : callback;
-          onValueChange(newValue);
+          onValueChange(newValue); // Passando o valor selecionado para o pai
         }}
         setItems={setItems}
         placeholder="Selecione uma opção"
@@ -38,13 +43,13 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
           borderRadius: 50,
           paddingHorizontal: 8,
           marginBottom: 20,
-          zIndex: 0,
-          elevation: 6,
-          // Sombra para iOS
-          shadowColor: COLORS.COLORS.PURPLEDARK1,
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.3,
-          shadowRadius: 4,
+        }}
+        textStyle={{
+          fontFamily: "Poppins", // Ajuste conforme necessário
+        }}
+        dropDownContainerStyle={{
+          borderRadius: 10,
+          elevation: 5,
         }}
       />
     </Container>

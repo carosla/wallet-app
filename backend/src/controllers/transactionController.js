@@ -4,9 +4,15 @@ const TipoTransacao = require('../models/tipo_transacao');
 
 const criarTransacao = async (req, res) => {
   try {
-    const { categoria_id, valor, data, tipo_transacao } = req.body;
+    const { categoria_id, valor, data, tipo_transacao, descricao } = req.body;
 
-    if (!categoria_id || !valor || !data || !tipo_transacao) {
+    if (!categoria_id || !valor || !data || !tipo_transacao || !descricao) {
+      console.log('categoria_id:', categoria_id,
+                  'valor:', valor,
+                  'data:', data,
+                  'tipo_transacao:', tipo_transacao,
+                  'descricao:', descricao,
+      )
       return res.status(400).json({ mensagem: "Preencha todos os campos." });
     }
 
@@ -33,6 +39,7 @@ const criarTransacao = async (req, res) => {
       tipo_transacao_id: tipoTransacao.tipo_transacao_id,  // Associando o tipo de transação
       data,
       valor,
+      descricao
     });
 
     res.status(201).json({
@@ -45,4 +52,33 @@ const criarTransacao = async (req, res) => {
   }
 };
 
-module.exports = { criarTransacao };
+
+const excluirTransacao = async (req, res) => {
+  try {
+    const { transacao_id } = req.params;
+    const usuario_id = req.usuario_id; // Obtém o ID do usuário autenticado
+
+    if (!transacao_id) {
+      return res.status(400).json({ mensagem: "ID da transação é obrigatório." });
+    }
+
+    // Verifica se a transação pertence ao usuário autenticado
+    const transacao = await Transacoes.findOne({
+      where: { transacao_id, usuario_id },
+    });
+
+    if (!transacao) {
+      return res.status(404).json({ mensagem: "Transação não encontrada ou não pertence ao usuário." });
+    }
+
+    // Exclui a transação
+    await transacao.destroy();
+
+    return res.status(200).json({ mensagem: "Transação excluída com sucesso." });
+  } catch (error) {
+    res.status(500).json({ mensagem: "Erro no servidor", erro: error.message });
+  }
+};
+
+
+module.exports = { criarTransacao, excluirTransacao };
