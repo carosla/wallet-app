@@ -31,6 +31,7 @@ const Usuario = sequelize.define('usuarios', {
     defaultValue: false,  // Define um valor padrão como 'false' para admin
   },
 }, {
+  sequelize,
   tableName: 'usuarios',  // Nome da tabela
   timestamps: false,      // Desabilita colunas de createdAt e updatedAt
 });

@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const TipoTransacao = sequelize.define('tipo_transacao', {
+const TipoTransacao = sequelize.define("tipo_transacao", {
   tipo_transacao_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -10,11 +10,12 @@ const TipoTransacao = sequelize.define('tipo_transacao', {
   transacao: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,  // Garante que cada tipo de transação seja único
+    unique: true,
   },
 }, {
-  tableName: 'tipo_transacao',  // Garante que o nome da tabela seja 'tipo_transacao' (minúsculo)
-  timestamps: false,            // Desabilita as colunas 'createdAt' e 'updatedAt'
+  sequelize,
+  tableName: "tipo_transacao",
+  timestamps: false,
 });
 
 module.exports = TipoTransacao;

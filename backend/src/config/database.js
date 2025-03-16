@@ -21,6 +21,7 @@ const sequelize = new Sequelize({
 sequelize.authenticate()
   .then(() => {
     console.log("📡 Banco de dados conectado com sucesso!");
+    sequelize.sync();
   })
   .catch((error) => {
     console.error("❌ Erro ao conectar no banco de dados:", error.message);

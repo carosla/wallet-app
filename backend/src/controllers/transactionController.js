@@ -1,6 +1,7 @@
 const Usuario = require('../models/usuario');
 const Transacoes = require('../models/transacoes');
 const TipoTransacao = require('../models/tipo_transacao');
+const Categoria = require('../models/categoria');
 
 const criarTransacao = async (req, res) => {
   try {
@@ -52,7 +53,6 @@ const criarTransacao = async (req, res) => {
   }
 };
 
-
 const excluirTransacao = async (req, res) => {
   try {
     const { transacao_id } = req.params;
@@ -80,5 +80,31 @@ const excluirTransacao = async (req, res) => {
   }
 };
 
+// Função para listar as transações do usuário
+const listarTransacoes = async (req, res) => {
+  try {
+    const usuario_id = req.usuario_id; 
 
-module.exports = { criarTransacao, excluirTransacao };
+    if (!usuario_id) {
+      return res.status(400).json({ mensagem: "Usuário não encontrado." });
+    }
+
+    const transacoes = await Transacoes.findAll({
+      where: { usuario_id }, 
+      include: [{
+        model: TipoTransacao,
+        attributes: ['transacao'], 
+      }],
+    });
+
+    if (transacoes.length === 0) {
+      return res.status(404).json({ mensagem: "Não há transações para este usuário." });
+    }
+
+    res.status(200).json(transacoes);
+  } catch (error) {
+    res.status(500).json({ mensagem: "Erro no servidor", erro: error.message });
+  }
+};
+
+module.exports = { criarTransacao, excluirTransacao, listarTransacoes };

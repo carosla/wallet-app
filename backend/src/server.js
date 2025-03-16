@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+import { syncDB } from "./models";
 
 const sequelize = require("./config/database");
 const authRoutes = require("./routes/authRoutes");
@@ -25,6 +26,7 @@ app.listen(PORT, async () => {
   try {
     await sequelize.authenticate();
     console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+    
   } catch (error) {
     console.error("❌ Erro ao conectar no banco:", error);
   }

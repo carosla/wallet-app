@@ -1,7 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
+const TipoTransacao = require("./tipo_transacao");
 
-const Transacoes = sequelize.define('transacoes', {
+const Transacoes = sequelize.define("transacoes", {
   transacao_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -11,16 +12,16 @@ const Transacoes = sequelize.define('transacoes', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'categoria', 
-      key: 'categoria_id', 
+      model: "categoria",
+      key: "categoria_id",
     },
   },
   usuario_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'Usuarios', 
-      key: 'usuario_id',  
+      model: "usuarios",
+      key: "usuario_id",
     },
   },
   data: {
@@ -35,17 +36,19 @@ const Transacoes = sequelize.define('transacoes', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'tipo_transacao', 
-      key: 'tipo_transacao_id', 
+      model: "tipo_transacao",
+      key: "tipo_transacao_id",
     },
   },
   descricao: {
-    type: DataTypes.STRING, 
-    allowNull: false,     
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "Sem descrição"
   },
 }, {
-  tableName: 'transacoes',  
-  timestamps: false,        
+  sequelize,
+  tableName: "transacoes",
+  timestamps: false,
 });
 
 module.exports = Transacoes;
