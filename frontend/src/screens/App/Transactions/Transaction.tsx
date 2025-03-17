@@ -1,10 +1,11 @@
-import React from 'react'
-import {  FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, ActivityIndicator } from 'react-native';
 import { CaretDoubleLeft } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Header } from '../../../components/Header/Header';
-import { transaction } from '../../../utils/transaction';
 import {
     Container,
     ContentFlat,
@@ -16,35 +17,64 @@ import {
     ButtonGoBack,
 } from './styles';
 
+interface Transaction {
+    transacao_id: string;
+    descricao: string;
+    valor: number;
+    data: string;
+    tipo_transacao: {
+        transacao: string;
+    };
+}
+
 export const Transaction = () => {
     const navigation = useNavigation();
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchTransactions = async () => {
+            try {
+                const token = await AsyncStorage.getItem('token');
+                const response = await axios.get('https://localhost:3000/api/transacao', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                setTransactions(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar transações:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTransactions();
+    }, []);
 
     const handleGoBackHome = () => {
-        navigation.goBack()
+        navigation.goBack();
+    };
+
+    if (loading) {
+        return <ActivityIndicator size="large" color="#000" />;
     }
 
     return (
         <>
-            <Header
-                iconLeft
-                typeTransaction
-                appName="Minhas Transações"
-            />
+            <Header iconLeft typeTransaction appName="Minhas Transações" />
             <Container>
                 <FlatList
-                    data={transaction}
+                    data={transactions}
+                    keyExtractor={(item) => item.transacao_id}
                     renderItem={({ item }) => (
                         <ContentFlat>
-                            <IconTransaction
-                                source={item.icon}
-                            />
+                            <IconTransaction source={{ uri: 'URL_DO_ICONE' }} />
 
                             <DetailsTransaction>
-                                <NameTransaction>{item.title}</NameTransaction>
-                                <SubtTitleTransaction>{item.subtitle}</SubtTitleTransaction>
+                                <NameTransaction>{item.descricao}</NameTransaction>
+                                <SubtTitleTransaction>{item.tipo_transacao.transacao}</SubtTitleTransaction>
                             </DetailsTransaction>
 
-                            <AmountTransaction>R$ {item.price}</AmountTransaction>
+                            <AmountTransaction>R$ {item.valor.toFixed(2)}</AmountTransaction>
                         </ContentFlat>
                     )}
                     showsVerticalScrollIndicator={false}
@@ -54,5 +84,5 @@ export const Transaction = () => {
                 </ButtonGoBack>
             </Container>
         </>
-    )
-}
+    );
+};

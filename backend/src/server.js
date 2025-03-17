@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-import { syncDB } from "./models";
+const { syncDB } = require("./models"); // Alterado para require
 
 const sequelize = require("./config/database");
 const authRoutes = require("./routes/authRoutes");
